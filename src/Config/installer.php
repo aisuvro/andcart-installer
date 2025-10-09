@@ -144,4 +144,19 @@ return [
     */
     'updaterEnabled' => 'true',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Marketplace Authentication
+    |--------------------------------------------------------------------------
+    | Configuration for marketplace authentication during installation.
+    | Set 'enabled' to false to skip marketplace authentication entirely.
+    |
+    */
+    'marketplace' => [
+        'enabled' => true,
+        'remote_url' => env('MARKETPLACE_URL', 'https://infrali.com'),
+        'required' => false, // Set to true to make marketplace auth mandatory
+        'skip_if_offline' => true, // Allow skipping if marketplace is not available
+    ],
+
 ];

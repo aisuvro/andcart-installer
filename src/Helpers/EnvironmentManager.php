@@ -145,8 +145,8 @@ class EnvironmentManager
                 throw new Exception('No valid updates found for tab: ' . $request->tab);
             }
 
-            // Sanitize values
-            $updates = SecurityHelper::sanitizeInput($updates);
+            // Sanitize values while preserving quotes for .env format
+            $updates = SecurityHelper::sanitizeInput($updates, false, true);
 
             // Create backup before making changes
             BackupManager::createEnvBackup();

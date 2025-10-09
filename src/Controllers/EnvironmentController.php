@@ -283,7 +283,7 @@ class EnvironmentController extends Controller
             'application' => 'LaravelInstaller::application-setting'
         ];
 
-        return $redirect->route($routes[$tab] ?? 'LaravelInstaller::environment-setting');
+        return $redirect->route($routes[$tab] ?? 'LaravelInstaller::environmentWizard');
     }
 
     /**
@@ -293,8 +293,8 @@ class EnvironmentController extends Controller
     {
         $routes = [
             'configuration' => 'LaravelInstaller::database-setting',
-            'database' => 'LaravelInstaller::database-backup',
-            'application' => 'LaravelInstaller::cache-queue'
+            'database' => 'LaravelInstaller::application-setting',
+            'application' => 'LaravelInstaller::installation-finished'
         ];
 
         return $redirect->route($routes[$tab])->with(['results' => $results]);
@@ -302,10 +302,11 @@ class EnvironmentController extends Controller
 
     /**
      * Sanitize input to prevent XSS and injection attacks
+     * For .env files, we don't want to encode quotes since they're expected as literals
      */
     private function sanitizeInput($input)
     {
-        return htmlspecialchars(strip_tags($input), ENT_QUOTES, 'UTF-8');
+        return strip_tags($input);
     }
 
     /**

@@ -1,35 +1,10 @@
 <?php
 
-Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'Jmrashed\LaravelInstaller\Controllers', 'middleware' => ['web', 'install']], function () {
+Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'Jmrashed\LaravelInstaller\Controllers', 'middleware' => ['web', 'install', 'marketplaceAuth']], function () {
 
     Route::get('/', [
         'as' => 'welcome',
         'uses' => 'InstallerController@welcome',
-    ]);
-
-    Route::get('/dependencies', [
-        'as' => 'dependencies',
-        'uses' => 'InstallerController@dependencies',
-    ]);
-
-    Route::get('/performance-dashboard', [
-        'as' => 'performance-dashboard',
-        'uses' => 'InstallerController@performanceDashboard',
-    ]);
-
-    Route::get('/cache-queue', [
-        'as' => 'cache-queue',
-        'uses' => 'InstallerController@cacheQueue',
-    ]);
-
-    Route::get('/database-backup', [
-        'as' => 'database-backup',
-        'uses' => 'InstallerController@databaseBackup',
-    ]);
-
-    Route::get('/resume-installation', [
-        'as' => 'resume-installation',
-        'uses' => 'InstallerController@resumeInstallation',
     ]);
 
     Route::post('environment/saveWizard', [
@@ -50,6 +25,26 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
     Route::get('/purchase-validation', [
         'as' => 'purchase-validation',
         'uses' => 'InstallerController@purchaseValidation',
+    ]);
+
+    Route::get('/marketplace-auth', [
+        'as' => 'marketplace-auth',
+        'uses' => 'MarketplaceAuthController@showAuth',
+    ]);
+
+    Route::post('/marketplace-login', [
+        'as' => 'marketplace-login',
+        'uses' => 'MarketplaceAuthController@handleLogin',
+    ]);
+
+    Route::post('/marketplace-signup', [
+        'as' => 'marketplace-signup',
+        'uses' => 'MarketplaceAuthController@handleSignup',
+    ]);
+
+    Route::get('/marketplace-skip', [
+        'as' => 'marketplace-skip',
+        'uses' => 'MarketplaceAuthController@skipAuth',
     ]);
 
     Route::get('/server-requirements', [
@@ -95,62 +90,6 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
     Route::post('/validate-purchase', [
         'as' => 'validate-purchase',
         'uses' => 'PurchaseController@validatePurchase',
-    ]);
-
-    // API routes for AJAX calls
-    Route::get('/api/progress', [
-        'as' => 'api.progress',
-        'uses' => 'ProgressController@getProgress',
-    ]);
-
-    Route::post('/api/progress/update', [
-        'as' => 'api.progress.update',
-        'uses' => 'ProgressController@updateProgress',
-    ]);
-
-    Route::get('/api/dependencies/check', [
-        'as' => 'api.dependencies.check',
-        'uses' => 'DependencyController@check',
-    ]);
-
-    Route::post('/api/dependencies/install', [
-        'as' => 'api.dependencies.install',
-        'uses' => 'DependencyController@install',
-    ]);
-
-    Route::get('/api/performance/metrics', [
-        'as' => 'api.performance.metrics',
-        'uses' => 'PerformanceController@getMetrics',
-    ]);
-
-    Route::post('/api/cache/clear', [
-        'as' => 'api.cache.clear',
-        'uses' => 'CacheQueueController@clearCaches',
-    ]);
-
-    Route::post('/api/queue/setup', [
-        'as' => 'api.queue.setup',
-        'uses' => 'CacheQueueController@setupQueues',
-    ]);
-
-    Route::post('/api/database/migrate', [
-        'as' => 'api.database.migrate',
-        'uses' => 'DatabaseController@migrate',
-    ]);
-
-    Route::post('/api/database/rollback', [
-        'as' => 'api.database.rollback',
-        'uses' => 'DatabaseController@rollback',
-    ]);
-
-    Route::post('/api/scheduler/setup', [
-        'as' => 'scheduler.setup',
-        'uses' => 'CacheQueueController@setupScheduler',
-    ]);
-
-    Route::post('/api/performance/optimize', [
-        'as' => 'performance.optimize',
-        'uses' => 'PerformanceController@optimize',
     ]);
 });
 

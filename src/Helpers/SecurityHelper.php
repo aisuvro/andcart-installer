@@ -9,17 +9,23 @@ class SecurityHelper
 {
     /**
      * Sanitize input data to prevent XSS and injection attacks
+     * For environment variables, we need to preserve quotes as literals
      */
-    public static function sanitizeInput($input, $allowHtml = false)
+    public static function sanitizeInput($input, $allowHtml = false, $preserveQuotes = false)
     {
         if (is_array($input)) {
-            return array_map(function($item) use ($allowHtml) {
-                return self::sanitizeInput($item, $allowHtml);
+            return array_map(function($item) use ($allowHtml, $preserveQuotes) {
+                return self::sanitizeInput($item, $allowHtml, $preserveQuotes);
             }, $input);
         }
 
         if (!$allowHtml) {
             $input = strip_tags($input);
+        }
+
+        // For .env files, don't encode quotes since they need to be literal
+        if ($preserveQuotes) {
+            return $input;
         }
 
         return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');

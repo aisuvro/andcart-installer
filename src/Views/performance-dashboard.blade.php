@@ -1,195 +1,255 @@
-@extends('vendor.installer.layouts.imaster')
+@extends('vendor.installer.layouts.master')
 
 @section('template_title')
     Performance Dashboard
 @endsection
 
-@section('icontent')
-    <div class="flex">
-        @include('vendor.installer._inc.aside')
+@section('title')
+    <i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>
+    Performance Dashboard
+@endsection
 
-        <div class="body-content w-full h-screen">
-            <h1 class="capitalize text-primary border-b-[2px] border-[var(--primary)] pl-20 py-5 text-2xl font-semibold mb-4">
-                {{ env('APP_NAME') }}
-            </h1>
-            <div class="h-[80vh] w-full flex flex-col justify-between items-center gap-10 pl-4"  style="background: #ffffffc4; padding: 15px;">
-                <div class="content-wrapper w-full">
-                    <h4 class="text-lg no-underline bg-primary text-white font-medium text-start px-6 py-3 mb-6 rounded-[4px] w-full">
-                        Performance Dashboard
-                    </h4>
-                    
-                    <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
-                        <div class="card bg-white p-6 rounded-md text-center">
-                            <h5 class="text-sm font-semibold text-gray-600 mb-2">Execution Time</h5>
-                            <div id="execution-time" class="text-2xl font-bold text-primary">--</div>
-                        </div>
-                        <div class="card bg-white p-6 rounded-md text-center">
-                            <h5 class="text-sm font-semibold text-gray-600 mb-2">Memory Usage</h5>
-                            <div id="memory-usage" class="text-2xl font-bold text-primary">--</div>
-                        </div>
-                        <div class="card bg-white p-6 rounded-md text-center">
-                            <h5 class="text-sm font-semibold text-gray-600 mb-2">Peak Memory</h5>
-                            <div id="peak-memory" class="text-2xl font-bold text-primary">--</div>
-                        </div>
-                        <div class="card bg-white p-6 rounded-md text-center">
-                            <h5 class="text-sm font-semibold text-gray-600 mb-2">Database Queries</h5>
-                            <div id="db-queries" class="text-2xl font-bold text-primary">--</div>
-                        </div>
-                    </div>
-
-                    <div class="card bg-white p-6 rounded-md mb-6">
-                        <h5 class="text-md font-semibold text-primary mb-4">Performance History</h5>
-                        <div class="chart-container bg-gray-50 p-4 rounded">
-                            <canvas id="metricsChart" width="400" height="200"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="card bg-white p-6 rounded-md">
-                        <h5 class="text-md font-semibold text-primary mb-4">Optimization Tools</h5>
-                        <div class="grid gap-4 grid-cols-1 md:grid-cols-3">
-                            <button id="optimize-performance" class="btn-primary-fill">
-                                <i class="ri-speed-line"></i>
-                                Optimize Performance
-                            </button>
-                            <button id="clear-opcache" class="btn-primary-outline">
-                                <i class="ri-refresh-line"></i>
-                                Clear OPCache
-                            </button>
-                            <button id="garbage-collect" class="btn-primary-outline">
-                                <i class="ri-delete-bin-line"></i>
-                                Run Garbage Collection
-                            </button>
-                        </div>
-                        <div id="optimization-results" class="results mt-4"></div>
-                    </div>
+@section('container')
+    <div class="performance-dashboard">
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fa fa-clock-o"></i>
                 </div>
-                
-                <div class="flex gap-4 items-center justify-center">
-                    <a href="{{ route('LaravelInstaller::cache-queue') }}" class="btn-primary-outline">
-                        <i class="ri-arrow-left-line"></i>
-                        Back
-                    </a>
-                    <a href="{{ route('LaravelInstaller::installation-finished') }}" class="btn-primary-fill">
-                        Finish Installation
-                        <i class="ri-check-double-line"></i>
-                    </a>
+                <div class="metric-content">
+                    <div class="metric-value" id="execution-time">--</div>
+                    <div class="metric-label">Execution Time (s)</div>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fa fa-memory"></i>
+                </div>
+                <div class="metric-content">
+                    <div class="metric-value" id="memory-usage">--</div>
+                    <div class="metric-label">Memory Usage</div>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fa fa-line-chart"></i>
+                </div>
+                <div class="metric-content">
+                    <div class="metric-value" id="memory-percentage">--</div>
+                    <div class="metric-label">Memory %</div>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fa fa-database"></i>
+                </div>
+                <div class="metric-content">
+                    <div class="metric-value" id="peak-memory">--</div>
+                    <div class="metric-label">Peak Memory</div>
                 </div>
             </div>
         </div>
+        
+        <div class="performance-actions">
+            <button type="button" class="button" id="optimize-btn">
+                <i class="fa fa-rocket"></i>
+                Optimize Performance
+            </button>
+            <button type="button" class="button" id="refresh-btn">
+                <i class="fa fa-refresh"></i>
+                Refresh Metrics
+            </button>
+        </div>
+        
+        <div class="performance-chart">
+            <h4>Performance History</h4>
+            <canvas id="performance-chart" width="400" height="200"></canvas>
+        </div>
     </div>
+@endsection
 
+@section('scripts')
     <script>
-        let metricsInterval;
-        let chartData = [];
+        class PerformanceDashboard {
+            constructor() {
+                this.init();
+            }
 
-        function startMetricsMonitoring() {
-            metricsInterval = setInterval(fetchMetrics, 3000);
-            fetchMetrics();
-        }
+            init() {
+                this.loadMetrics();
+                this.loadHistory();
+                
+                document.getElementById('optimize-btn').addEventListener('click', () => this.optimize());
+                document.getElementById('refresh-btn').addEventListener('click', () => this.loadMetrics());
+                
+                setInterval(() => this.loadMetrics(), 10000); // Update every 10 seconds
+            }
 
-        function fetchMetrics() {
-            fetch('{{ route("LaravelInstaller::api.performance.metrics") }}')
-                .then(response => response.json())
-                .then(data => {
-                    updateMetricsDisplay(data);
-                    updateChart(data);
-                })
-                .catch(error => console.error('Error fetching metrics:', error));
-        }
+            async loadMetrics() {
+                try {
+                    const response = await fetch('/installer/performance/metrics');
+                    const metrics = await response.json();
+                    this.updateMetrics(metrics);
+                } catch (error) {
+                    console.error('Failed to load metrics:', error);
+                }
+            }
 
-        function updateMetricsDisplay(metrics) {
-            document.getElementById('execution-time').textContent = 
-                metrics.execution_time ? metrics.execution_time.toFixed(4) + 's' : '--';
-            document.getElementById('memory-usage').textContent = 
-                metrics.memory_used ? formatBytes(metrics.memory_used) : '--';
-            document.getElementById('peak-memory').textContent = 
-                metrics.peak_memory ? formatBytes(metrics.peak_memory) : '--';
-            document.getElementById('db-queries').textContent = 
-                metrics.db_queries || '--';
-        }
+            async loadHistory() {
+                try {
+                    const response = await fetch('/installer/performance/history?hours=1');
+                    const data = await response.json();
+                    this.updateChart(data.metrics);
+                } catch (error) {
+                    console.error('Failed to load history:', error);
+                }
+            }
 
-        function updateChart(metrics) {
-            if (metrics.execution_time) {
-                chartData.push({
-                    time: new Date().toLocaleTimeString(),
-                    execution_time: metrics.execution_time,
-                    memory: metrics.memory_used
+            updateMetrics(metrics) {
+                document.getElementById('execution-time').textContent = 
+                    metrics.execution_time ? metrics.execution_time.toFixed(3) : '--';
+                document.getElementById('memory-usage').textContent = 
+                    this.formatBytes(metrics.current_memory);
+                document.getElementById('memory-percentage').textContent = 
+                    metrics.memory_percentage + '%';
+                document.getElementById('peak-memory').textContent = 
+                    this.formatBytes(metrics.peak_memory);
+            }
+
+            updateChart(metrics) {
+                const canvas = document.getElementById('performance-chart');
+                const ctx = canvas.getContext('2d');
+                
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                if (metrics.length === 0) return;
+                
+                // Draw execution time chart
+                const times = metrics.map(m => m.execution_time);
+                const maxTime = Math.max(...times);
+                const width = canvas.width - 40;
+                const height = canvas.height - 40;
+                
+                ctx.strokeStyle = '#007bff';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                
+                times.forEach((time, index) => {
+                    const x = 20 + (index / (times.length - 1)) * width;
+                    const y = height - (time / maxTime) * height + 20;
+                    
+                    if (index === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
                 });
                 
-                if (chartData.length > 20) {
-                    chartData.shift();
-                }
+                ctx.stroke();
+            }
+
+            async optimize() {
+                const btn = document.getElementById('optimize-btn');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Optimizing...';
                 
-                drawChart();
-            }
-        }
-
-        function drawChart() {
-            const canvas = document.getElementById('metricsChart');
-            const ctx = canvas.getContext('2d');
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            if (chartData.length < 2) return;
-            
-            const maxTime = Math.max(...chartData.map(d => d.execution_time));
-            const width = canvas.width;
-            const height = canvas.height;
-            
-            ctx.strokeStyle = '#007cba';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            
-            chartData.forEach((point, index) => {
-                const x = (index / (chartData.length - 1)) * width;
-                const y = height - (point.execution_time / maxTime) * height;
-                
-                if (index === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
+                try {
+                    const response = await fetch('/installer/performance/optimize', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                        }
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        alert('Performance optimization completed successfully!');
+                        this.loadMetrics();
+                    } else {
+                        alert('Optimization failed: ' + result.message);
+                    }
+                } catch (error) {
+                    alert('Optimization failed: ' + error.message);
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa fa-rocket"></i> Optimize Performance';
                 }
-            });
-            
-            ctx.stroke();
-        }
-
-        function formatBytes(bytes) {
-            if (bytes >= 1024 * 1024) {
-                return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-            } else if (bytes >= 1024) {
-                return (bytes / 1024).toFixed(2) + ' KB';
             }
-            return bytes + ' B';
-        }
 
-        document.getElementById('optimize-performance').addEventListener('click', function() {
-            this.innerHTML = '<i class="ri-loader-4-line animate-spin"></i> Optimizing...';
-            this.disabled = true;
-            
-            fetch('{{ route("LaravelInstaller::performance.optimize") }}', { 
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            formatBytes(bytes) {
+                if (bytes >= 1024 * 1024 * 1024) {
+                    return (bytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+                } else if (bytes >= 1024 * 1024) {
+                    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+                } else if (bytes >= 1024) {
+                    return (bytes / 1024).toFixed(2) + ' KB';
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('optimization-results').innerHTML = 
-                    `<div class="p-3 rounded ${data.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${data.message}</div>`;
-                this.innerHTML = '<i class="ri-speed-line"></i> Optimize Performance';
-                this.disabled = false;
-            });
-        });
-
-        // Start monitoring when page loads
-        document.addEventListener('DOMContentLoaded', startMetricsMonitoring);
-        
-        // Stop monitoring when leaving page
-        window.addEventListener('beforeunload', function() {
-            if (metricsInterval) {
-                clearInterval(metricsInterval);
+                return bytes + ' B';
             }
-        });
+        }
+
+        // Initialize dashboard
+        new PerformanceDashboard();
     </script>
+
+    <style>
+        .performance-dashboard { padding: 2rem; }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .metric-icon {
+            font-size: 2rem;
+            color: #007bff;
+            margin-right: 1rem;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .performance-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .performance-chart {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        #performance-chart {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #dee2e6;
+        }
+    </style>
 @endsection

@@ -25,15 +25,11 @@ return [
      */
     'menus' => [
         'title' => 'INSTALLER',
+        'marketplaceAuth' => 'Marketplace Authentication',
         'purchaseValidation' => 'Purchase Validation',
         'serverRequirements' => 'Server Requirements',
         'permissions' => 'Permissions',
-        'dependencies' => 'Dependencies',
         'environmentSettings' => 'Environment Settings',
-        'databaseSettings' => 'Database Settings',
-        'databaseBackup' => 'Database Migration',
-        'cacheQueue' => 'Cache & Queue',
-        'performance' => 'Performance',
         'installationFinished' => 'Installation Finished',
     ],
 
@@ -59,6 +55,33 @@ return [
         'title'   => 'Start & Installing | Laravel Installer',
         'message' => 'Easy Installation and Setup Wizard.',
         'next'    => 'Next & Install',
+    ],
+
+    /*
+     *
+     * Marketplace Authentication translations.
+     *
+     */
+    'marketplaceAuth' => [
+        'templateTitle' => 'Marketplace Authentication',
+        'title'   => 'Marketplace Authentication | Laravel Installer',
+        'message' => 'Authenticate with the marketplace to access premium features and updates.',
+        'previous'=> 'Welcome',
+        'next'    => 'Continue to Server Requirements',
+        'loginButton' => 'Login to Marketplace',
+        'signupButton' => 'Create Account',
+        'skipButton' => 'Continue Offline',
+        'offlineMessage' => 'The marketplace is not available. You can continue with the installation in offline mode, but some features may be limited.',
+        'form' => [
+            'nameLabel' => 'Full Name',
+            'emailLabel' => 'Email Address',
+            'passwordLabel' => 'Password',
+            'confirmPasswordLabel' => 'Confirm Password',
+            'namePlaceholder' => 'Enter your full name',
+            'emailPlaceholder' => 'Enter your email address',
+            'passwordPlaceholder' => 'Enter your password',
+            'confirmPasswordPlaceholder' => 'Confirm your password',
+        ]
     ],
 
     /*
@@ -91,7 +114,7 @@ return [
         'templateTitle' => 'Server Requirements',
         'title'   => 'Server Requirements | Laravel Installer',
         'message' => 'Server Requirements',
-        'previous'=> 'Purchase Validation',
+        'previous'=> 'Marketplace Authentication',
         'next'    => 'Permissions'
     ],
 
@@ -309,44 +332,6 @@ return [
     ],
 
     'install' => 'Install',
-
-    /*
-     *
-     * v2.0.0 New Features translations.
-     *
-     */
-    'dependencies' => [
-        'templateTitle' => 'Dependencies Check',
-        'title' => 'Dependencies Check',
-        'back' => 'Back',
-        'next' => 'Next',
-        'check' => 'Check Dependencies',
-    ],
-    'cache_queue' => [
-        'templateTitle' => 'Cache & Queue Setup',
-        'title' => 'Cache & Queue Setup',
-        'back' => 'Back',
-        'next' => 'Next',
-    ],
-    'database_backup' => [
-        'templateTitle' => 'Database Migration & Backup',
-        'title' => 'Database Migration & Backup',
-        'description' => 'This step will create a backup of your database before running migrations.',
-        'back' => 'Back',
-        'next' => 'Next',
-    ],
-    'performance' => [
-        'templateTitle' => 'Performance Dashboard',
-        'title' => 'Performance Dashboard',
-        'back' => 'Back',
-        'next' => 'Next',
-    ],
-    'resume' => [
-        'templateTitle' => 'Resume Installation',
-        'title' => 'Resume Installation',
-        'description' => 'You can resume your installation from where you left off.',
-        'back' => 'Back to Welcome',
-    ],
 
     /*
      *
