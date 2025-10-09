@@ -1,10 +1,10 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Middleware;
+namespace Aisuvro\AndcartInstaller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Jmrashed\LaravelInstaller\Helpers\ProgressTracker;
+use Aisuvro\AndcartInstaller\Helpers\ProgressTracker;
 
 class ProgressMiddleware
 {

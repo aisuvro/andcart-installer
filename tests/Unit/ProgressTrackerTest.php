@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
-use Jmrashed\LaravelInstaller\Helpers\ProgressTracker;
+use Aisuvro\AndcartInstaller\Helpers\ProgressTracker;
 
 class ProgressTrackerTest extends TestCase
 {

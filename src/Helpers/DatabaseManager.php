@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Helpers;
+namespace Aisuvro\AndcartInstaller\Helpers;
 
 use Exception;
 use Illuminate\Database\SQLiteConnection;

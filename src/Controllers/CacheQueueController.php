@@ -1,12 +1,12 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Jmrashed\LaravelInstaller\Helpers\CacheQueueManager;
-use Jmrashed\LaravelInstaller\Helpers\LogManager;
-use Jmrashed\LaravelInstaller\Helpers\ProgressTracker;
+use Aisuvro\AndcartInstaller\Helpers\CacheQueueManager;
+use Aisuvro\AndcartInstaller\Helpers\LogManager;
+use Aisuvro\AndcartInstaller\Helpers\ProgressTracker;
 
 class CacheQueueController extends Controller
 {

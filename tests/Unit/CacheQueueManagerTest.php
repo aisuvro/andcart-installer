@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use Jmrashed\LaravelInstaller\Helpers\CacheQueueManager;
+use Aisuvro\AndcartInstaller\Helpers\CacheQueueManager;
 
 class CacheQueueManagerTest extends TestCase
 {

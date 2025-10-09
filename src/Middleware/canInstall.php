@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Middleware;
+namespace Aisuvro\AndcartInstaller\Middleware;
 
 use Closure;
 

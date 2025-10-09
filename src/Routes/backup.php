@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Jmrashed\LaravelInstaller\Controllers\DatabaseController;
-use Jmrashed\LaravelInstaller\Controllers\ProgressController;
-use Jmrashed\LaravelInstaller\Controllers\PerformanceController;
-use Jmrashed\LaravelInstaller\Controllers\DependencyController;
-use Jmrashed\LaravelInstaller\Controllers\CacheQueueController;
+use Aisuvro\AndcartInstaller\Controllers\DatabaseController;
+use Aisuvro\AndcartInstaller\Controllers\ProgressController;
+use Aisuvro\AndcartInstaller\Controllers\PerformanceController;
+use Aisuvro\AndcartInstaller\Controllers\DependencyController;
+use Aisuvro\AndcartInstaller\Controllers\CacheQueueController;
 
 Route::group(['prefix' => 'installer', 'middleware' => ['web']], function () {
     Route::post('database/migrate', [DatabaseController::class, 'migrate'])->name('LaravelInstaller::database.migrate');

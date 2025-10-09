@@ -6,10 +6,10 @@ use Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
-use Jmrashed\LaravelInstaller\Controllers\EnvironmentController;
-use Jmrashed\LaravelInstaller\Helpers\EnvironmentManager;
-use Jmrashed\LaravelInstaller\Helpers\SecurityHelper;
-use Jmrashed\LaravelInstaller\Helpers\BackupManager;
+use Aisuvro\AndcartInstaller\Controllers\EnvironmentController;
+use Aisuvro\AndcartInstaller\Helpers\EnvironmentManager;
+use Aisuvro\AndcartInstaller\Helpers\SecurityHelper;
+use Aisuvro\AndcartInstaller\Helpers\BackupManager;
 
 class EnvironmentControllerTest extends TestCase
 {

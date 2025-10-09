@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Jmrashed\LaravelInstaller\Helpers\DependencyChecker;
+use Aisuvro\AndcartInstaller\Helpers\DependencyChecker;
 
 class DependencyCheckerTest extends TestCase
 {

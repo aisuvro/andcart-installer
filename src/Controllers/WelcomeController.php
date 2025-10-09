@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Events;
+namespace Aisuvro\AndcartInstaller\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;

@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Jmrashed\LaravelInstaller\Helpers\PerformanceMonitor;
+use Aisuvro\AndcartInstaller\Helpers\PerformanceMonitor;
 
 class PerformanceMonitorTest extends TestCase
 {

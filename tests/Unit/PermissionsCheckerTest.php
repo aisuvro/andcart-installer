@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use Jmrashed\LaravelInstaller\Helpers\PermissionsChecker;
+use Aisuvro\AndcartInstaller\Helpers\PermissionsChecker;
 use Tests\TestCase;
 
 class PermissionsCheckerTest extends TestCase

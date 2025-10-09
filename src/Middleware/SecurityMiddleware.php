@@ -1,11 +1,11 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Middleware;
+namespace Aisuvro\AndcartInstaller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Jmrashed\LaravelInstaller\Helpers\SecurityHelper;
+use Aisuvro\AndcartInstaller\Helpers\SecurityHelper;
 
 class SecurityMiddleware
 {

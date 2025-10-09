@@ -1,11 +1,11 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Middleware;
+namespace Aisuvro\AndcartInstaller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Jmrashed\LaravelInstaller\Helpers\DependencyChecker;
-use Jmrashed\LaravelInstaller\Helpers\LogManager;
+use Aisuvro\AndcartInstaller\Helpers\DependencyChecker;
+use Aisuvro\AndcartInstaller\Helpers\LogManager;
 
 class DependencyMiddleware
 {

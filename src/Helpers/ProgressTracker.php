@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Helpers;
+namespace Aisuvro\AndcartInstaller\Helpers;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;

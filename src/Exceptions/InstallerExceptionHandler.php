@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Exceptions;
+namespace Aisuvro\AndcartInstaller\Exceptions;
 
 use Exception;
 use Illuminate\Http\Request;

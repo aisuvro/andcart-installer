@@ -1,9 +1,9 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
-use Jmrashed\LaravelInstaller\Helpers\RequirementsChecker;
+use Aisuvro\AndcartInstaller\Helpers\RequirementsChecker;
 
 class RequirementsController extends Controller
 {

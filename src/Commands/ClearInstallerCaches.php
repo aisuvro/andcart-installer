@@ -1,9 +1,9 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Commands;
+namespace Aisuvro\AndcartInstaller\Commands;
 
 use Illuminate\Console\Command;
-use Jmrashed\LaravelInstaller\Helpers\CacheQueueManager;
+use Aisuvro\AndcartInstaller\Helpers\CacheQueueManager;
 
 class ClearInstallerCaches extends Command
 {

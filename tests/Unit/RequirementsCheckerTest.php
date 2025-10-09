@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use Jmrashed\LaravelInstaller\Helpers\RequirementsChecker;
+use Aisuvro\AndcartInstaller\Helpers\RequirementsChecker;
 use Tests\TestCase;
 
 class RequirementsCheckerTest extends TestCase

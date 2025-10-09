@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
-use Jmrashed\LaravelInstaller\Helpers\DatabaseBackupManager;
-use Jmrashed\LaravelInstaller\Helpers\LogManager;
-use Jmrashed\LaravelInstaller\Helpers\ProgressTracker;
-use Jmrashed\LaravelInstaller\Helpers\PerformanceMonitor;
-use Jmrashed\LaravelInstaller\Helpers\DatabaseOptimizer;
+use Aisuvro\AndcartInstaller\Helpers\DatabaseBackupManager;
+use Aisuvro\AndcartInstaller\Helpers\LogManager;
+use Aisuvro\AndcartInstaller\Helpers\ProgressTracker;
+use Aisuvro\AndcartInstaller\Helpers\PerformanceMonitor;
+use Aisuvro\AndcartInstaller\Helpers\DatabaseOptimizer;
 
 class DatabaseController extends Controller
 {

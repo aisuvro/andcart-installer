@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Jmrashed\LaravelInstaller\Controllers\WelcomeController;
+use Aisuvro\AndcartInstaller\Controllers\WelcomeController;
 use Tests\TestCase;
 
 class WelcomeControllerTest extends TestCase

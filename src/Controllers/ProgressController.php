@@ -1,10 +1,10 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Jmrashed\LaravelInstaller\Helpers\ProgressTracker;
+use Aisuvro\AndcartInstaller\Helpers\ProgressTracker;
 
 class ProgressController extends Controller
 {

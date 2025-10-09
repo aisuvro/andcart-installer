@@ -1,10 +1,10 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
-use Jmrashed\LaravelInstaller\Helpers\DatabaseManager;
-use Jmrashed\LaravelInstaller\Helpers\InstalledFileManager;
+use Aisuvro\AndcartInstaller\Helpers\DatabaseManager;
+use Aisuvro\AndcartInstaller\Helpers\InstalledFileManager;
 
 class UpdateController extends Controller
 {

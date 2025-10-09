@@ -1,11 +1,11 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Middleware;
+namespace Aisuvro\AndcartInstaller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use App\Services\MarketplaceService;
-use Jmrashed\LaravelInstaller\Controllers\MarketplaceAuthController;
+use Aisuvro\AndcartInstaller\Controllers\MarketplaceAuthController;
 
 class MarketplaceAuthMiddleware
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Providers;
+namespace Aisuvro\AndcartInstaller\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Jmrashed\LaravelInstaller\Middleware\canInstall;
-use Jmrashed\LaravelInstaller\Middleware\canUpdate;
-use Jmrashed\LaravelInstaller\Middleware\MarketplaceAuthMiddleware;
+use Aisuvro\AndcartInstaller\Middleware\canInstall;
+use Aisuvro\AndcartInstaller\Middleware\canUpdate;
+use Aisuvro\AndcartInstaller\Middleware\MarketplaceAuthMiddleware;
 
 class LaravelInstallerServiceProvider extends ServiceProvider
 {

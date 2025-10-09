@@ -1,10 +1,10 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
-use Jmrashed\LaravelInstaller\Helpers\PermissionsChecker;
-use Jmrashed\LaravelInstaller\Helpers\RequirementsChecker;
+use Aisuvro\AndcartInstaller\Helpers\PermissionsChecker;
+use Aisuvro\AndcartInstaller\Helpers\RequirementsChecker;
 
 class InstallerController extends Controller
 {

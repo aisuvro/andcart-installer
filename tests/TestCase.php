@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Jmrashed\LaravelInstaller\Providers\LaravelInstallerServiceProvider;
+use Aisuvro\AndcartInstaller\Providers\LaravelInstallerServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase

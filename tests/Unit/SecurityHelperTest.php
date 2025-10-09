@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Jmrashed\LaravelInstaller\Helpers\SecurityHelper;
+use Aisuvro\AndcartInstaller\Helpers\SecurityHelper;
 
 class SecurityHelperTest extends TestCase
 {

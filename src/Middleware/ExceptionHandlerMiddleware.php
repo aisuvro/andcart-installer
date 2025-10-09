@@ -1,11 +1,11 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Middleware;
+namespace Aisuvro\AndcartInstaller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Jmrashed\LaravelInstaller\Exceptions\InstallerExceptionHandler;
-use Jmrashed\LaravelInstaller\Helpers\LogManager;
+use Aisuvro\AndcartInstaller\Exceptions\InstallerExceptionHandler;
+use Aisuvro\AndcartInstaller\Helpers\LogManager;
 use Throwable;
 
 class ExceptionHandlerMiddleware

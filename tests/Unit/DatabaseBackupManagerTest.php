@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\File;
-use Jmrashed\LaravelInstaller\Helpers\DatabaseBackupManager;
+use Aisuvro\AndcartInstaller\Helpers\DatabaseBackupManager;
 
 class DatabaseBackupManagerTest extends TestCase
 {

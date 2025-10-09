@@ -1,13 +1,13 @@
 <?php
 
-namespace Jmrashed\LaravelInstaller\Controllers;
+namespace Aisuvro\AndcartInstaller\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Jmrashed\LaravelInstaller\Helpers\DependencyChecker;
-use Jmrashed\LaravelInstaller\Helpers\LogManager;
-use Jmrashed\LaravelInstaller\Helpers\ProgressTracker;
+use Aisuvro\AndcartInstaller\Helpers\DependencyChecker;
+use Aisuvro\AndcartInstaller\Helpers\LogManager;
+use Aisuvro\AndcartInstaller\Helpers\ProgressTracker;
 
 class DependencyController extends Controller
 {

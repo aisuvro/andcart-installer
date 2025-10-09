@@ -1,34 +1,45 @@
 {
-    "name": "jmrashed/laravel-installer",
-    "description": "A complete web installer for Laravel applications, making the setup process simple and user-friendly.",
+    "name": "aisuvro/andcart-installer",
+    "description": "A complete web installer for AndCart applications, making the setup process simple and user-friendly.",
     "license": "MIT",
     "authors": [
         {
             "name": "Rashed Zaman",
             "email": "jmrashed@gmail.com",
             "homepage": "https://github.com/jmrashed",
-            "role": "Developer"
+            "role": "Original Developer"
+        },
+        {
+            "name": "aisuvro",
+            "email": "aisuvro@example.com",
+            "homepage": "https://github.com/aisuvro",
+            "role": "Fork Maintainer"
         }
     ],
     "keywords": [
+        "andcart",
         "laravel", 
         "installer", 
         "web installer", 
         "laravel setup", 
         "laravel installation", 
-        "laravel package"
+        "laravel package",
+        "ecommerce installer"
     ],
-    "homepage": "https://github.com/jmrashed/laravel-installer",
+    "homepage": "https://github.com/aisuvro/andcart-installer",
     "support": {
-        "issues": "https://github.com/jmrashed/laravel-installer/issues",
-        "source": "https://github.com/jmrashed/laravel-installer"
+        "issues": "https://github.com/aisuvro/andcart-installer/issues",
+        "source": "https://github.com/aisuvro/andcart-installer"
     },
     "require": {
-        "php": ">=7.0.0"
+        "php": ">=8.1.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/console": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/http": "^9.0|^10.0|^11.0|^12.0"
     },
     "autoload": {
         "psr-4": {
-            "Jmrashed\\LaravelInstaller\\": "src/"
+            "Aisuvro\\AndcartInstaller\\": "src/"
         },
         "files": [
             "src/Helpers/functions.php"
@@ -37,7 +48,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Jmrashed\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider"
+                "Aisuvro\\AndcartInstaller\\Providers\\LaravelInstallerServiceProvider"
             ]
         }
     },
