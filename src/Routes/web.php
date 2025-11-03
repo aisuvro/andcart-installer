@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'Jmrashed\LaravelInstaller\Controllers', 'middleware' => ['web', 'install', 'marketplaceAuth']], function () {
+Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'Aisuvro\AndcartInstaller\Controllers', 'middleware' => ['web', 'install', 'marketplaceAuth']], function () {
 
     Route::get('/', [
         'as' => 'welcome',
@@ -93,7 +93,7 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
     ]);
 });
 
-Route::group(['prefix' => 'update', 'as' => 'LaravelUpdater::', 'namespace' => 'Jmrashed\LaravelInstaller\Controllers', 'middleware' => 'web'], function () {
+Route::group(['prefix' => 'update', 'as' => 'LaravelUpdater::', 'namespace' => 'Aisuvro\AndcartInstaller\Controllers', 'middleware' => 'web'], function () {
     Route::group(['middleware' => 'update'], function () {
         Route::get('/', [
             'as' => 'welcome',
