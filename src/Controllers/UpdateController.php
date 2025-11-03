@@ -8,7 +8,7 @@ use Aisuvro\AndcartInstaller\Helpers\InstalledFileManager;
 
 class UpdateController extends Controller
 {
-    use \Jmrashed\LaravelInstaller\Helpers\MigrationsHelper;
+    use \Aisuvro\AndcartInstaller\Helpers\MigrationsHelper;
 
     /**
      * Display the updater welcome page.
@@ -44,7 +44,7 @@ class UpdateController extends Controller
         $response = $databaseManager->migrateAndSeed();
 
         return redirect()->route('LaravelUpdater::final')
-                         ->with(['message' => $response]);
+            ->with(['message' => $response]);
     }
 
     /**
